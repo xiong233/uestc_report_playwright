@@ -31,6 +31,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           playwright install webkit
+          playwright install-deps
       - name: 'Working'
         run:
           python main.py ${{ secrets.username }} ${{ secrets.password }}
