@@ -40,6 +40,7 @@ def log_in(page):
 
     for i in range(5):
         try:
+            page.wait_for_timeout(1000)
             get_decode_image(page)
             image1 = "./front.png"
             # 背景图片
