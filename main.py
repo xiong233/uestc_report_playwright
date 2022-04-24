@@ -51,7 +51,7 @@ def log_in(page):
             print(distance)
             # 滑动验证：获取要位置的距离
 
-            page.locator('#captcha > div > div.sliderMask > div').wait_for(timeout=20000)
+            page.locator('#captcha > div > div.sliderMask > div').wait_for(timeout=2000)
             elem = page.locator('#captcha > div > div.sliderMask > div')
 
             elem.hover()
@@ -62,7 +62,7 @@ def log_in(page):
             page.wait_for_timeout(800)
             page.mouse.up()
             print("Loading...")
-            page.wait_for_timeout(2000)
+            page.wait_for_timeout(5000)
 
         except Exception as e:
             print("Error loading or swiping captcha image. ", e)
