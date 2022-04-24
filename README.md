@@ -42,7 +42,7 @@
 
 `pip install -r requirements.txt`
 
-`playwright install webkit
+`playwright install-deps webkit
 `
 
 运行打卡项目
@@ -56,5 +56,8 @@
 2、本项目的滑动验证识别部分用的[onion-rain/uestc_health_report](https://github.com/onion-rain/uestc_health_report) 的代码。
 
 3、Selenium会被判定为爬虫，之前先用Pyppeter做了一个[打卡项目](https://github.com/xiong233/uestc_report_public) 
-但是存在一些让人不舒服的地方（a,各种坑还搜不到解决方案; b,无头模式在本项目中也会判定爬虫; c,action每次打卡都要传输chrome压缩包）。
-所以本项目基于[Playwright](https://github.com/microsoft/playwright-python) 实现，语法跟Pyppeter差不多
+但是有一些不太好的地方
+
+a,各种坑还搜不到解决方案; b,必须使用有头模式，无头模式也会判定爬虫; c,action每次打卡都要传输chrome压缩包。
+
+所以用[Playwright](https://github.com/microsoft/playwright-python) 实现了一下，能在Ubuntu上跑无头模式，语法跟Pyppeter差不多

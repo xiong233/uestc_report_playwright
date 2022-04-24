@@ -16,7 +16,6 @@ confirm_button = "body > div.mint-msgbox-wrapper > div > div.mint-msgbox-btns > 
 def get_decode_image(page):
     page.locator("#img1").wait_for(timeout=10000, state="attached")
     src1 = page.locator("#img1").get_attribute("src")
-    print("src1", src1)
     im_base64 = src1.split(',')[1]  # 拿到base64编码的图片信息
     im_bytes = base64.b64decode(im_base64)  # 转为bytes类型
     with open('bg.png', 'wb') as f:  # 保存图片到本地
@@ -52,13 +51,15 @@ def log_in(page):
             print(distance)
             # 滑动验证：获取要位置的距离
 
-            page.locator('#captcha > div > div.sliderMask > div').wait_for(timeout=10000)
+            page.locator('#captcha > div > div.sliderMask > div').wait_for(timeout=20000)
             elem = page.locator('#captcha > div > div.sliderMask > div')
 
             elem.hover()
             page.mouse.down()
             pos = elem.bounding_box()
+            page.wait_for_timeout(400)
             page.mouse.move(pos['x']+pos['width']/2+distance, pos['y'] + 15, steps=35)
+            page.wait_for_timeout(800)
             page.mouse.up()
             print("Loading...")
             page.wait_for_timeout(2000)
