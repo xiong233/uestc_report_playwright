@@ -16,6 +16,7 @@ confirm_button = "body > div.mint-msgbox-wrapper > div > div.mint-msgbox-btns > 
 def get_decode_image(page):
     page.locator("#img1").wait_for(timeout=10000, state="attached")
     src1 = page.locator("#img1").get_attribute("src")
+    print("src1", src1)
     im_base64 = src1.split(',')[1]  # 拿到base64编码的图片信息
     im_bytes = base64.b64decode(im_base64)  # 转为bytes类型
     with open('bg.png', 'wb') as f:  # 保存图片到本地
@@ -76,7 +77,7 @@ def log_in(page):
 
 def check():
     with sync_playwright() as p:
-        browser = p.webkit.launch(headless=False)
+        browser = p.webkit.launch(headless=True)
         context = browser.new_context(user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148')
 
         page = context.new_page()
