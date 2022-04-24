@@ -28,7 +28,7 @@ jobs:
         with:
            python-version: '3.10'
       - name: 'Set up playwright'
-      - uses: microsoft/action-setup-playwright@v1
+      - uses: microsoft/playwright-github-action@v1
 
       - name: 'Install requirements'
         run:
