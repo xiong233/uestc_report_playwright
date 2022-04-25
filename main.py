@@ -119,8 +119,8 @@ def main():
             page.locator(save_button).wait_for(timeout=10000)
             page.click(save_button)
             print("Save OK ", time() - logtime)
-        except:
-            print("Repeat report")
+        except Exception as e:
+            print("Repeat report for", e)
             browser.close()
             return
 
