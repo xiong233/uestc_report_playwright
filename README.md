@@ -42,7 +42,7 @@
 
 `pip install -r requirements.txt`
 
-`playwright install-deps webkit
+`playwright install-deps firefox
 `
 
 运行打卡项目
@@ -60,4 +60,6 @@
 
 a,各种坑还搜不到解决方案; b,必须使用有头模式，无头模式也会判定爬虫; c,action每次打卡都要传输chrome压缩包。
 
-所以用[Playwright](https://github.com/microsoft/playwright-python) 实现了一下，能在Ubuntu上跑无头模式，语法跟Pyppeter差不多
+所以用[Playwright](https://github.com/microsoft/playwright-python) 实现本项目，能跑无头模式，语法跟Pyppeter差不多
+
+好像也有一些坑，有时候打不开网站

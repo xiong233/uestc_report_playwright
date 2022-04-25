@@ -126,7 +126,7 @@ def main():
 
         page.wait_for_timeout(1000)
         page.locator(confirm_button).wait_for(timeout=10000)
-        # page.click(confirm_button)
+        page.click(confirm_button)
         print("Confirm OK ", time() - logtime)
         page.wait_for_timeout(1000)
         browser.close()
