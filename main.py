@@ -34,6 +34,7 @@ def log_in(page):
     url = 'https://eportal.uestc.edu.cn/jkdkapp/sys/lwReportEpidemicStu/*default/index.do'
 
     page.goto(url)
+    page.wait_for_timeout(1000)
     page.fill("#mobileUsername", username)
     page.fill("#mobilePassword", password)
     page.click("#load")
@@ -81,7 +82,7 @@ def log_in(page):
 
 def main():
     with sync_playwright() as p:
-        browser = p.firefox.launch(headless=False)
+        browser = p.firefox.launch(headless=True)
         context = browser.new_context(user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148')
 
         page = context.new_page()
