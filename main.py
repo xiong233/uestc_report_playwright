@@ -1,3 +1,4 @@
+import pdb
 from time import time
 import base64
 from playwright.sync_api import sync_playwright
@@ -80,7 +81,7 @@ def log_in(page):
 
 def main():
     with sync_playwright() as p:
-        browser = p.webkit.launch(headless=True)
+        browser = p.webkit.launch(headless=False)
         context = browser.new_context(user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148')
 
         page = context.new_page()
@@ -107,9 +108,12 @@ def main():
         try:
             page.locator(add_button).wait_for(timeout=10000)
             page.click(add_button)
+            try:
+                page.click(add_button, timeout=1000)
+            except Exception as e:
+                print("Second click error for", e)
             print("Add OK ", time() - logtime)
-            page.wait_for_timeout(1000)
-            page.keyboard.press('ArrowDown', delay=500)
+
             page.wait_for_timeout(1000)
 
             page.locator(save_button).wait_for(timeout=10000)
@@ -122,7 +126,7 @@ def main():
 
         page.wait_for_timeout(1000)
         page.locator(confirm_button).wait_for(timeout=10000)
-        page.click(confirm_button)
+        # page.click(confirm_button)
         print("Confirm OK ", time() - logtime)
         page.wait_for_timeout(1000)
         browser.close()
