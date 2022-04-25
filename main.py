@@ -106,16 +106,13 @@ def main():
         page.wait_for_timeout(5000)
 
         try:
-            print(page.url)
             page.locator(add_button).wait_for(timeout=10000)
             page.click(add_button)
-            print(page.url)
             try:
                 page.click(add_button, timeout=10001)
             except Exception as e:
                 print("Second click error for", e)
             print("Add OK ", time() - logtime)
-            print(page.url)
             page.wait_for_timeout(1000)
 
             page.locator(save_button).wait_for(timeout=10000)
