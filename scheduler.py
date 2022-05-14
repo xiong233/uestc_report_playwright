@@ -32,7 +32,8 @@ def job():
 
 
 scheduler_report = BlockingScheduler()
-scheduler_report.add_job(job, 'cron', day='*', hour="14", minute="11", args=[], misfire_grace_time=300)
-scheduler_report.add_job(job, 'cron', day='*', hour="14", minute="13", args=[], misfire_grace_time=300)
+scheduler_report.add_job(job, 'cron', day='*', hour="8", minute="15", args=[], misfire_grace_time=300)
+scheduler_report.add_job(job, 'cron', day='*', hour="8", minute="50", args=[], misfire_grace_time=300)
+scheduler_report.add_job(job, 'cron', day='*', hour="9", minute="15", args=[], misfire_grace_time=300)
 print("job started", flush=True)
 scheduler_report.start()

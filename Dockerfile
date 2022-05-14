@@ -31,7 +31,7 @@ ENV APP_PATH="/"
 ENV LC_ALL="C.UTF-8"
 
 COPY ./main.py ./slide.py ./scheduler.py ./requirements.txt $APP_PATH/
-
+ARG DEBIAN_FRONTEND=noninteractive
 # install packages & config docker
 RUN apt-get update && \
   apt-get upgrade -y &&\
@@ -39,13 +39,13 @@ RUN apt-get update && \
   apt-get -y autoremove && \
   apt-get clean
 
-RUN pip install -r /requirements.txt && \
-    playwright install-deps firefox
-
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone
+    
+RUN pip install -r /requirements.txt && \
+    playwright install-deps firefox
 
 WORKDIR ${APP_PATH}
 
 # RUN main.py
-ENTRYPOINT [ "python", "/scheduler.py"]
+ENTRYPOINT [ "python3", "/scheduler.py"]
