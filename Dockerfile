@@ -23,7 +23,7 @@
 # CMD ["/usr/local/bin/python", "-u", "/app/server/cv_main.py"]
 
 
-FROM ubuntu:20.04
+FROM mcr.microsoft.com/playwright/python:v1.22.0-focal
 
 # config app
 ENV APP_PATH="/"
@@ -32,18 +32,12 @@ ENV LC_ALL="C.UTF-8"
 
 COPY ./main.py ./slide.py ./scheduler.py ./requirements.txt $APP_PATH/
 ARG DEBIAN_FRONTEND=noninteractive
-# install packages & config docker
-RUN apt-get update && \
-  apt-get upgrade -y &&\
-  apt-get -y install python3 pip && \
-  apt-get -y autoremove && \
-  apt-get clean
 
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    echo "Asia/Shanghai" > /etc/timezone
-    
-RUN pip install -r /requirements.txt && \
-    playwright install-deps firefox
+RUN pip install -r /requirements.txt
+
+RUN \
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
+    # echo "Asia/Shanghai" > /etc/timezone
 
 WORKDIR ${APP_PATH}
 
