@@ -1,7 +1,6 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 import sys, os, subprocess
 
-
 if os.environ.get('REPORT_ID') is None:
     print("请配置环境变量REPORT_ID REPORT_PASSWORD", flush=True)
     sys.exit(1)
@@ -11,7 +10,6 @@ passwd = os.environ.get("REPORT_PASSWORD")
 
 def exec():
     p = subprocess.Popen(['python', './main.py', id, passwd])
-    # p = subprocess.Popen(['./main', id, passwd])
     p.wait()
     if p.returncode != 0:
         print("[WARNING] exited with return code " + str(p.returncode))
