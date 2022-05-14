@@ -4,7 +4,7 @@
 
 ## 前言
 
-1、本项目将在每天早上7点半左右通过信息门户账号登陆[健康打卡系统](https://eportal.uestc.edu.cn/jkdkapp/sys/lwReportEpidemicStu/*default/index.do) 进行健康打卡。
+1、本项目将在每天早上10点半左右通过信息门户账号登陆[健康打卡系统](https://eportal.uestc.edu.cn/jkdkapp/sys/lwReportEpidemicStu/*default/index.do) 进行健康打卡。
 
 2、本项目打卡所提交的内容（比如是否留校，是否隔离等）取决于你昨天的打卡内容，如果有变化请及时手动更新自己的状态。
 
@@ -56,10 +56,10 @@
 2、本项目的滑动验证识别部分用的[onion-rain/uestc_health_report](https://github.com/onion-rain/uestc_health_report) 的代码。
 
 3、Selenium会被判定为爬虫，之前先用Pyppeter做了一个[打卡项目](https://github.com/xiong233/uestc_report_public) 
-但是有一些不太好的地方
+但是有一些不太好的地方，用了一段时间目前已经失效
 
 a,各种坑还搜不到解决方案; b,必须使用有头模式，无头模式也会判定爬虫; c,action每次打卡都要传输chrome压缩包。
 
 所以用[Playwright](https://github.com/microsoft/playwright-python) 实现本项目，能跑无头模式，语法跟Pyppeter差不多
 
-好像也有一些坑，有时候打不开网站
+好像也有一些坑，有时候打不开网站，感觉本项目离失效也不远了。。。
