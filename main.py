@@ -82,7 +82,7 @@ def log_in(page):
 
 def main():
     with sync_playwright() as p:
-        browser = p.firefox.launch(headless=True)
+        browser = p.firefox.launch(headless=False)
         context = browser.new_context(user_agent='Mozilla/5.0 (iPhone; CPU iPhone OS 13_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148')
 
         page = context.new_page()
@@ -130,7 +130,7 @@ def main():
         try:
             page.click(confirm_button, timeout=3001)
         except Exception as e:
-            print("Second click no need for", e)
+            print("Second click no need")
         print("Confirm OK ", time() - logtime)
         page.wait_for_timeout(3000)
         browser.close()
