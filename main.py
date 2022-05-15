@@ -127,8 +127,12 @@ def main():
         page.wait_for_timeout(1000)
         page.locator(confirm_button).wait_for(timeout=10000)
         page.click(confirm_button)
+        try:
+            page.click(confirm_button, timeout=3001)
+        except Exception as e:
+            print("Second click no need for", e)
         print("Confirm OK ", time() - logtime)
-        page.wait_for_timeout(1000)
+        page.wait_for_timeout(3000)
         browser.close()
         print("Successfully reported")
 
